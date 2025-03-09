@@ -1,27 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
+    <title>HAPPY</title>
+    <link rel="stylesheet" href="css/home.css" />
   </head>
   <body>
-    <h1>HAPPY</h1>
-    <div class="image">
-      <img src="images/homepage_image.jpg" alt="image" />
+    <header>
+      <div class="title-background">
+        <h1 class="title">HAPPY</h1>
+      </div>
+    </header>
+
+    <main class="features">
+      <div class="feature-card" id="start-habit">
+        <img
+          src="images/starting_habit.jpg"
+          alt="Start Habit Image"
+          class="feature-img"
+        />
+        <p>Start today's habit!</p>
+      </div>
+
+      <div class="feature-card" id="notifications">
+        <img
+          src="images/notification.jpg"
+          alt="Notification Bell"
+          class="feature-img"
+        />
+        <span class="notification-badge" id="notification-count">1</span>
+        <p>Notifications</p>
+      </div>
+
+      <div class="feature-card" id="past-achievements">
+        <img
+          src="images/achievement.jpg"
+          alt="Achievements Badge"
+          class="feature-img"
+        />
+        <p>Past achievements</p>
+      </div>
+    </main>
+
+    <div class="popup-overlay" id="popup-overlay">
+      <div class="popup-content">
+        <h2>Enter your stress level:</h2>
+        <input type="number" id="stressInput" placeholder="숫자를 입력하세요" />
+        <div class="popup-buttons">
+          <button id="cancelBtn">취소</button>
+          <button id="submitBtn">확인</button>
+        </div>
+      </div>
     </div>
-    <div class="buttons">
-      <button id="start">시작!</button>
-      <button id="notifications">Notifications</button>
-      <button id="past_achievements">Past achievements</button>
-    </div>
-    <div class="pop_up">
-      <input
-        type="text"
-        placeholder="스트레스 레벨을 작성하세요"
-        id="stress_level"
-      />
-      <button id="stress_submition">submit</button>
-    </div>
+
+    <script src="js/home.js"></script>
   </body>
 </html>
