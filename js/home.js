@@ -1,28 +1,36 @@
 const stressThreshold = 10;
 
-const startHabit = document.querySelector("#start-habit");
-const popupOverlay = document.querySelector(".popup-overlay");
-const exit = document.querySelector("#cancelBtn");
-const goOn = document.querySelector("#submitBtn");
-const stress = document.querySelector("#stressInput");
+const startHabitCard = document.querySelector("#start-habit");
 const notificationsCard = document.querySelector("#notifications");
 const pastAchievementsCard = document.querySelector("#past-achievements");
 
-startHabit.addEventListener("click", () => {
+const popupOverlay = document.querySelector(".popup-overlay");
+const stressInput = document.querySelector("#stressInput");
+const cancelBtn = document.querySelector("#cancelBtn");
+const submitBtn = document.querySelector("#submitBtn");
+
+// "Start today's habit!" 클릭 시 팝업 열기
+startHabitCard.addEventListener("click", () => {
   popupOverlay.style.display = "flex";
 });
 
-exit.addEventListener("click", () => {
+// 팝업 닫기 (취소 버튼)
+cancelBtn.addEventListener("click", () => {
   popupOverlay.style.display = "none";
-  stress.value = "";
+  stressInput.value = "";
 });
 
-goOn.addEventListener("click", () => {
-  const stressValue = parseInt(stress.value, 10);
+// 팝업 제출 버튼
+submitBtn.addEventListener("click", () => {
+  const stressValue = parseInt(stressInput.value, 10);
 
   if (isNaN(stressValue)) {
     alert("숫자를 입력해주세요.");
-  } else if (stressValue < stressThreshold) {
+    return;
+  }
+
+  // stress 조건에 따라 다른 페이지로 이동
+  if (stressValue < stressThreshold) {
     window.location.href = "1_gratitude.html";
   } else {
     window.location.href = "3_anger.html";
@@ -33,6 +41,7 @@ goOn.addEventListener("click", () => {
 notificationsCard.addEventListener("click", () => {
   window.location.href = "notifications_select.html";
 });
+
 // Past achievements 클릭 시 이동
 pastAchievementsCard.addEventListener("click", () => {
   window.location.href = "achievements_select.html";
