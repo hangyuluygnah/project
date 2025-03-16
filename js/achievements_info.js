@@ -9,7 +9,7 @@ const achievementsData = [
 const urlParams = new URLSearchParams(window.location.search);
 const currentId = parseInt(urlParams.get("id"), 10);
 
-const achievementsTitle = document.querySelector(".title");
+const achievementsTitle = document.querySelector("#achievementTitle");
 
 // ID에 해당하는 title 가져오기
 achievementsTitle.textContent = achievementsData[currentId - 1];

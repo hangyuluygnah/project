@@ -4,7 +4,7 @@ const startHabitCard = document.querySelector("#start-habit");
 const notificationsCard = document.querySelector("#notifications");
 const pastAchievementsCard = document.querySelector("#past-achievements");
 
-const popupOverlay = document.querySelector(".popup-overlay");
+const popupOverlay = document.querySelector("#popup-overlay");
 const stressInput = document.querySelector("#stressInput");
 const cancelBtn = document.querySelector("#cancelBtn");
 const submitBtn = document.querySelector("#submitBtn");
