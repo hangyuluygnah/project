@@ -9,6 +9,10 @@ const stressInput = document.querySelector("#stressInput");
 const cancelBtn = document.querySelector("#cancelBtn");
 const submitBtn = document.querySelector("#submitBtn");
 
+console.log("home.js loaded!!");
+console.log("I'm so happy to see you here! 😊");
+console.log("Let's start today's habit!");
+
 // "Start today's habit!" 클릭 시 팝업 열기
 startHabitCard.addEventListener("click", () => {
   popupOverlay.style.display = "flex";
