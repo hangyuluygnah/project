@@ -4,53 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gratitude Journals</title>
+    <link rel="stylesheet" href="css/1_gratitude.css" />
   </head>
   <body>
-    <h1>Gratitude Journals</h1>
-    <div class="journals">
-      <div id="today">
-        <h3>Today's journal</h3>
-        <p>"Let's write down what you want to write"</p>
+    <header>
+      <div class="title-background">
+        <h1 class="title">Gratitude Journals</h1>
       </div>
-      <div class="past_3_days">
-        <div id="one_day_ago">
-          <h3>Journal of 3/1</h3>
-          <p>Your journal's content</p>
+    </header>
+
+    <div class="container">
+      <div class="journals">
+        <div class="current-journal">
+          <button id="write-journal-btn">Start today's Journal</button>
         </div>
-        <div id="two_days_ago">
-          <h3>Journal of 2/28</h3>
-          <p>Your journal's content</p>
-        </div>
-        <div id="three_days_ago">
-          <h3>Journal of 2/27</h3>
-          <p>Your journal's content</p>
+
+        <h2>Past Journals</h2>
+        <div id="past-journals" class="past-journals">
+          <!-- Past journals will be loaded here dynamically -->
+          <p class="loading-text">Loading your past journals...</p>
         </div>
       </div>
     </div>
-    <div id="writing_the_journal_down">
-      <h3>Journal of today</h3>
-      <input
-        type="text"
-        id="content"
-        placeholder="write down your today's journal"
-      />
-      <div class="buttons">
-        <button>Submit</button
-        ><!--만약에 positive하면 밑에 팝업이 뜨고, 그렇지 않으면 4번으로-->
-        <button>Exit</button>
+
+    <div id="journal-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Journal of Today</h3>
+        <textarea
+          id="journal-content"
+          placeholder="Write down your today's journal"
+        ></textarea>
+        <div class="buttons">
+          <button id="submit-btn">Submit</button>
+          <button id="exit-btn">Exit</button>
+        </div>
       </div>
     </div>
-    <div id="write_the_emotion_down">
-      <h3>Enotion that you felt</h3>
-      <input
-        tywepe="text"
-        id="content"
-        placeholder="write down the emotion that you felt"
-      />
+
+    <div id="emotion-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>What emotions did you feel today?</h3>
+        <input
+          type="text"
+          id="emotion-content"
+          placeholder="Write down the emotions that you felt"
+        />
+        <div class="buttons">
+          <button id="emotion-submit-btn">Submit</button>
+          <button id="emotion-skip-btn">Skip</button>
+        </div>
+      </div>
     </div>
-    <div class="buttons">
-      <button>Submit</button
-      ><!--submit하고 나면 둘이 저장이 되고, 다음 단계로-->
+
+    <div id="view-journal-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3 id="view-journal-title">
+          Journal of <span id="journal-date"></span>
+        </h3>
+        <div id="view-journal-content" class="view-content"></div>
+        <div id="view-emotion" class="view-emotion hidden">
+          <h4>Emotion:</h4>
+          <p id="view-emotion-content"></p>
+        </div>
+        <div class="buttons">
+          <button id="close-view-btn">Close</button>
+        </div>
+      </div>
     </div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="js/1_gratitude.js"></script>
   </body>
 </html>
