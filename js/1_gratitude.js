@@ -13,18 +13,26 @@ import {
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCWnF0it2M6oGqIRdKS-8uUHhqFHwXLrvc",
-  authDomain: "happy-30711.firebaseapp.com",
-  projectId: "happy-30711",
-  storageBucket: "happy-30711.firebasestorage.app",
-  messagingSenderId: "1006201530112",
-  appId: "1:1006201530112:web:45ce56959bb3f7e504b5e5",
+  apiKey: "TODO",
+  authDomain: "TODO",
+  projectId: "TODO",
+  storageBucket: "TODO",
+  messagingSenderId: "TODO",
+  appId: "TODO",
 };
 
 // TODO: Firebase 초기화하기
 // app과 db 변수 설정하기
 
 // TODO: 필요한 DOM 요소 가져오기
+const writeJournalBtn = document.querySelector("#write-journal-btn");
+const journalModal = document.querySelector("#journal-modal");
+const exitBtn = document.querySelector("#exit-btn");
+const submitBtn = document.querySelector("#submit-btn");
+const journalContent = document.querySelector("#journal-content");
+const emotionModal = document.querySelector("#emotion-modal");
+const emotionSubmitBtn = document.querySelector("#emotion-submit-btn");
+const emotionContent = document.querySelector("#emotion-content");
 
 // 모달 관련 변수
 let currentJournalContent = "";
@@ -32,19 +40,15 @@ let isPositive = false;
 
 // 일기 작성 모달 열기
 writeJournalBtn.addEventListener("click", () => {
-  // TODO: 일기 작성 모달 표시하기
-  // journalContent 초기화하기
+  journalModal.classList.remove("hidden");
+  journalModal.classList.add("show");
+  journalContent.value = "";
 });
 
 // 일기 작성 모달 닫기
 exitBtn.addEventListener("click", () => {
-  // TODO: 일기 작성 모달 닫기
-});
-
-// 감정 모달 닫기 (Skip)
-emotionSkipBtn.addEventListener("click", () => {
-  // TODO: 감정 입력을 건너뛰고 일기만 저장하기
-  // saveJournal 함수 호출 (emotion 매개변수 없이)
+  journalModal.classList.remove("show");
+  journalModal.classList.add("hidden");
 });
 
 // 보기 모달 닫기
@@ -54,29 +58,58 @@ closeViewBtn.addEventListener("click", () => {
 
 // 일기 제출 버튼 클릭
 submitBtn.addEventListener("click", () => {
-  // TODO:
-  // 1. 일기 내용 가져오기
-  // 2. 내용이 비어있으면 경고 메시지 표시
-  // 3. 내용이 긍정적인지 확인하기 checkIfPositive 함수 사용
-  // 4. 결과에 따라 다음 단계 진행하기:
-  //    - 긍정적이면 감정 모달 표시
-  //    - 부정적이면 바로 내용만 저장
+  const content = journalContent.value.trim();
+
+  if (!content) {
+    alert("내용을 입력하세요");
+    return;
+  }
+
+  // 햔재 일기 내용
+  currentJournalContent = content;
+
+  // 일기 내용이 긍정적인지 확인
+  isPositive = checkIfPositive(content);
+
+  if (isPositive) {
+    emotionModal.classList.remove("hidden");
+    emotionModal.classList.add("show");
+    journalModal.classList.remove("show");
+    journalModal.classList.add("hidden");
+    journalContent.value = "";
+  } else {
+    journalModal.classList.remove("show");
+    journalModal.classList.add("hidden");
+    journalContent.value = "";
+    // TODO: 일기 저장하기
+  }
 });
 
 // 감정 제출 버튼 클릭
 emotionSubmitBtn.addEventListener("click", () => {
-  // TODO:
-  // 1. 감정 내용 가져오기
-  // 2. 내용이 비어있으면 경고 메시지 표시
-  // 3. 일기와 감정을 저장하기 위해 saveJournal 함수 호출
+  const emotion = emotionContent.value.trim();
+
+  if (!emotion) {
+    alert("감정을 입력하세요");
+    return;
+  }
+
+  emotionModal.classList.add("hidden");
+  emotionModal.classList.remove("show");
+  emotionContent.value = "";
+  // TODO: 일기와 감정 저장하기
 });
 
 // 내용이 긍정적인지 확인하는 함수
 function checkIfPositive(content) {
-  // TODO:
-  // 1. 긍정적인 단어 목록 만들기
-  // 2. 입력된 내용이 긍정적인 단어를 포함하는지 확인
-  // 3. 결과 반환하기 (true/false)
+  const positiveWordList = ["happy", "joy"];
+
+  for (const word of positiveWordList) {
+    if (content.includes(word)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // 일기를 Firebase에 저장하는 함수
