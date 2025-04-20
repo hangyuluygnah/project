@@ -85,7 +85,7 @@ submitBtn.addEventListener("click", () => {
   }
 });
 
-// 감정 제출 버튼 클릭
+//감정 제출 버튼 클릭
 emotionSubmitBtn.addEventListener("click", () => {
   const emotion = emotionContent.value.trim();
 
